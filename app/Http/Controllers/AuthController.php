@@ -39,11 +39,18 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();;
 
-        return redirect("/listings");
+        return redirect("/");
     }
 
     public function registerView(){
         return view("auth.register",["page_title" => "Rejestracja"]);
+    }
+
+    public function register(Request $request){
+        $this->authService->register($request);
+        $request->session()->regenerate();
+
+        return redirect("/");
     }
 
 

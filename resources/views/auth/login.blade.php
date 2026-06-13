@@ -5,12 +5,15 @@
 
     <div class="authContainer">
 
-        <div class="formErrors mb-3">
-            @if($errors->any())
-                {{ implode('', $errors->all()) }}
-            @endif
-        </div>
-
+        @if($errors->any())
+            <div class="formErrors my-3">
+                <ul class="list-unstyled">
+                    @foreach($errors->all() as $error)
+                        <li class="text-center">{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="authCard">
             <h1>Logowanie</h1>
             <form method="post" action="/auth/login">

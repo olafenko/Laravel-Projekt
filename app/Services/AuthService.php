@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,19 @@ class AuthService
 
         return Auth::attempt($credentials);
 
+    }
+
+    public function register(Request $request) : void
+    {
+        $credentials = $request->validate([
+           "username" => ["required","unique:users,username","min:4","max:45"],
+           "email" => ["required","email","unique:users,email"],
+           "password" => ["required","min:8"],
+        ]);
+
+        $user = User::create($credentials);
+
+        Auth::login($user);
     }
 
     public function logout() : void
