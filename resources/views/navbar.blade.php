@@ -13,11 +13,15 @@
                 <a href='/'>Ulubione</a>
                 <a href='/'>Wiadomości</a>
                 <a href='/'>Konto</a>
-                <a href='/'>Wyloguj</a>
+            <form method="post" action="/auth/logout" class="d-inline">
+                @csrf
+                <button type="submit" class="logoutLink">Wyloguj</button>
+            </form>
+
             @endauth
             @guest()
-                <a href='/'>Zarejestruj się</a>
-                <a href='/'>Logowanie</a>
+                <a href='/auth/register'>Zarejestruj się</a>
+                <a href='/auth/login'>Logowanie</a>
             @endguest
         </div>
 </nav>
