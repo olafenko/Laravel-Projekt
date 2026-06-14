@@ -14,4 +14,6 @@ Route::post('/auth/logout',[AuthController::class,"logout"]);
 Route::get('/auth/register',[AuthController::class,"registerView"]);
 Route::post('/auth/register',[AuthController::class,"register"]);
 
+Route::get('/listings/create',[ListingController::class,"createView"]);
+
 

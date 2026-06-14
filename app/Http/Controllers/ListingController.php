@@ -22,6 +22,11 @@ class ListingController extends Controller
         return view("listing.index",["models" => $models, "page_title" => "Wszystkie ogłoszenia"]);
     }
 
+    public function createView()
+    {
+        return view("listing.create",["page_title" => "Dodaj ogłoszenie"]);
+    }
+
 
 
 }
