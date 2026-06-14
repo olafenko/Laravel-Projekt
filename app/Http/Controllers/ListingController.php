@@ -19,7 +19,7 @@ class ListingController extends Controller
     {
         $models = $this->listingService->getAllListings();
 
-        return view("listing.index",["models" => $models, "pageTitle" => "Wszystkie ogłoszenia"]);
+        return view("listing.index",["models" => $models, "page_title" => "Wszystkie ogłoszenia"]);
     }
 
 

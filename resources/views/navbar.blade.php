@@ -2,22 +2,26 @@
 
         <div>
             <h1>
-                <a href='/'>Serwis ogłoszeniowy </a>
+                <a href='/listings'>Serwis ogłoszeniowy </a>
             </h1>
         </div>
 
         <div>
-            <a href='/'>Wszystkie ogłoszenia</a>
+            <a href='/listings'>Wszystkie ogłoszenia</a>
             @auth()
-                <a href='/'>Dodaj ogłoszenie</a>
-                <a href='/'>Ulubione</a>
-                <a href='/'>Wiadomości</a>
-                <a href='/'>Konto</a>
-                <a href='/'>Wyloguj</a>
+                <a href='/listings'>Dodaj ogłoszenie</a>
+                <a href='/listings'>Ulubione</a>
+                <a href='/listings'>Wiadomości</a>
+                <a href='/listings'>Konto</a>
+            <form method="post" action="/auth/logout" class="d-inline">
+                @csrf
+                <button type="submit" class="logoutLink">Wyloguj</button>
+            </form>
+
             @endauth
             @guest()
-                <a href='/'>Zarejestruj się</a>
-                <a href='/'>Logowanie</a>
+                <a href='/auth/register'>Zarejestruj się</a>
+                <a href='/auth/login'>Logowanie</a>
             @endguest
         </div>
 </nav>
