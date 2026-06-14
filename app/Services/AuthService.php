@@ -24,9 +24,9 @@ class AuthService
     public function register(Request $request) : void
     {
         $credentials = $request->validate([
-           "username" => ["required","unique:users,username","min:4","max:45"],
+           "username" => ["required","unique:users,username","min:4","max:45","regex:/^[a-zA-Z0-9_]+$/"],
            "email" => ["required","email","unique:users,email"],
-           "password" => ["required","min:8"],
+           "password" => ["required","min:8","regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"],
         ]);
 
         $user = User::create($credentials);

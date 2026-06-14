@@ -20,13 +20,19 @@
                 </div>
                 <div class="listingCard-actions">
                     <a class="detailsBtn" href=''> Pokaż szczegóły</a>
-                    <a class="editBtn" href=''>Edytuj</a>
-                    <form method='post' action=''>
-                        <button type='submit' class="iconBtn delete">❌</button>
-                    </form>
-                    <form method='post' action=''>
-                        <button type='submit' class="iconBtn fav">❤</button>
-                    </form>
+                    @auth
+                        @can("update",$model)
+                            <a class="editBtn" href=''>Edytuj</a>
+                            <form method='post' action=''>
+                                <button type='submit' class="iconBtn delete">❌</button>
+                            </form>
+                        @endcan
+                        @can("add-as-favourite",$model)
+                            <form method='post' action=''>
+                                <button type='submit' class="iconBtn fav">❤</button>
+                            </form>
+                        @endcan
+                    @endauth
                 </div>
             </div>
         @endforeach
