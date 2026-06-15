@@ -19,7 +19,7 @@
             @foreach($models as $model)
                 <div class='listingCard'>
                     <div class='listingCard-photo'>
-                        <img src='{{$model->photo_url ?? 'uploads/no-image.jpg'}}'>
+                        <img src='{{$model->photo_url != null ? asset("storage/" . $model->photo_url) : asset("uploads/no-image.jpg")}}'>
                     </div>
                     <div class="listingCard-body">
                         <h3>{{$model->title}}</h3>

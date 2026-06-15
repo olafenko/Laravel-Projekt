@@ -475,9 +475,12 @@ a {
 /*----- STYLE DLA FORMULARZ DODAWANIA/EDYTOWANIA -----*/
 
 .listingFormPage {
-    display: flex;
-    justify-content: center;
+
     padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .formCard {

@@ -36,6 +36,13 @@ class ListingController extends Controller
         return view("listing.create",["categories" => $categories,"page_title" => "Dodaj ogłoszenie"]);
     }
 
+    public function create(Request $request)
+    {
+        $this->listingService->createListing($request);
+
+        return redirect("/listings");
+    }
+
 
 
 }
