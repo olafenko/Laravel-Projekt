@@ -9,7 +9,7 @@ class ListingService
 {
 
     public function getAllListings() : Collection{
-        return Listing::all();
+        return Listing::where("is_active","=",true)->get();
     }
 
 

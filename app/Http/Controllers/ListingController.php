@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CategoryService;
 use App\Services\ListingService;
 use Illuminate\Http\Request;
 
@@ -9,11 +10,18 @@ class ListingController extends Controller
 {
 
     private ListingService $listingService;
+    private CategoryService $categoryService;
 
-    public function __construct(ListingService $listingService)
+    /**
+     * @param ListingService $listingService
+     * @param CategoryService $categoryService
+     */
+    public function __construct(ListingService $listingService, CategoryService $categoryService)
     {
         $this->listingService = $listingService;
+        $this->categoryService = $categoryService;
     }
+
 
     public function index()
     {
@@ -24,7 +32,8 @@ class ListingController extends Controller
 
     public function createView()
     {
-        return view("listing.create",["page_title" => "Dodaj ogłoszenie"]);
+        $categories = $this->categoryService->getAllCategories();
+        return view("listing.create",["categories" => $categories,"page_title" => "Dodaj ogłoszenie"]);
     }
 
 

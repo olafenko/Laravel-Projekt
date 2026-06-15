@@ -15,8 +15,10 @@
                 </div>
                 <div class="formInput">
                     <label>Kategoria</label>
-                    <select name='categoryId' required>
-                        TODO select kategorii
+                    <select name='categoryId' required> <option value="" selected disabled hidden>Wybierz kategorie...</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                 </div>
 
