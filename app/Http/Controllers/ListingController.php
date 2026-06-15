@@ -27,7 +27,7 @@ class ListingController extends Controller
     {
         $models = $this->listingService->getAllListings();
 
-        return view("listing.index",["models" => $models, "page_title" => "Wszystkie ogłoszenia"]);
+        return view("listing.index",["models" => $models,"listingsCount" => $models->count(),"page_title" => "Wszystkie ogłoszenia"]);
     }
 
     public function createView()
