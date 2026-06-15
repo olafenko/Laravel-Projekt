@@ -17,4 +17,6 @@ Route::post('/auth/register',[AuthController::class,"register"]);
 Route::get('/listings/create',[ListingController::class,"createView"]);
 Route::post('/listings/create',[ListingController::class,"create"]);
 
+Route::post('/listings/delete/{id}',[ListingController::class,"delete"]);
+
 

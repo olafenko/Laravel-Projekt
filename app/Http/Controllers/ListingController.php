@@ -40,7 +40,13 @@ class ListingController extends Controller
     {
         $this->listingService->createListing($request);
 
-        return redirect("/listings");
+        return redirect("/listings")->with("success","Ogłoszenie dodane pomyślnie.");
+    }
+
+    public function delete($id){
+
+        $this->listingService->delete($id);
+        return redirect("/listings")->with('success',"Ogłoszenie usunięte pomyślnie.");
     }
 
 
