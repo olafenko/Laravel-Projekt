@@ -30,10 +30,11 @@ class ListingController extends Controller
         return view("listing.index",["models" => $models,"listingsCount" => $models->count(),"page_title" => "Wszystkie ogłoszenia"]);
     }
 
-    public function createView()
+    public function listingForm(?int $id = null)
     {
         $categories = $this->categoryService->getAllCategories();
-        return view("listing.create",["categories" => $categories,"page_title" => "Dodaj ogłoszenie"]);
+        $listing = $this->listingService->getListingById($id);
+        return view("listing.form",["categories" => $categories,"page_title" => $id == null ? "Dodaj ogłoszenie" : "Edytuj ogłoszenie","model" => $listing]);
     }
 
     public function create(Request $request)
@@ -41,6 +42,13 @@ class ListingController extends Controller
         $this->listingService->createListing($request);
 
         return redirect("/listings")->with("success","Ogłoszenie dodane pomyślnie.");
+    }
+
+    public function edit(Request $request,$id)
+    {
+        $this->listingService->editListing($request,$id);
+
+        return redirect("/listings")->with("success","Ogłoszenie edytowane pomyślnie.");
     }
 
     public function delete($id){

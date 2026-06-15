@@ -30,10 +30,10 @@
                         <p class="metaData">Data dodania: {{$model->created_at}}</p>
                     </div>
                     <div class="listingCard-actions">
-                        <a class="detailsBtn" href='{{ url()->current() }}/edit/{{$model->id}}'> Pokaż szczegóły</a>
+                        <a class="detailsBtn" href='{{ url()->current() }}/{{$model->id}}'> Pokaż szczegóły</a>
                         @auth
                             @can("update",$model)
-                                <a class="editBtn" href=''>Edytuj</a>
+                                <a class="editBtn" href='{{ url()->current() }}/edit/{{$model->id}}'>Edytuj</a>
                                 <form method='post' action='{{ url()->current() }}/delete/{{$model->id}}'>
                                     <button type='submit' class="iconBtn delete">❌</button>
                                 </form>
