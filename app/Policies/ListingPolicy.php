@@ -13,7 +13,7 @@ class ListingPolicy
      */
     public function update(User $user, Listing $listing): bool
     {
-        return $user->id === $listing->author_id;
+        return ($user->id === $listing->author_id) || $user->is_admin;
     }
 
     public function addAsFavourite(User $user, Listing $listing): bool

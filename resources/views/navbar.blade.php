@@ -9,10 +9,10 @@
         <div>
             <a href='/listings'>Wszystkie ogłoszenia</a>
             @auth()
-                <a href='/listings'>Dodaj ogłoszenie</a>
-                <a href='/listings'>Ulubione</a>
-                <a href='/listings'>Wiadomości</a>
-                <a href='/listings'>Konto</a>
+                <a href='/listings/create'>Dodaj ogłoszenie</a>
+                <a href='/listings/favourites/add'>Ulubione</a>
+                <a href='/messages'>Wiadomości</a>
+                <a href='/account'>Konto</a>
             <form method="post" action="/auth/logout" class="d-inline">
                 @csrf
                 <button type="submit" class="logoutLink">Wyloguj</button>
