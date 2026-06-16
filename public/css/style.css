@@ -6,10 +6,13 @@ body {
     font-family: "Segoe UI",sans-serif;
     background-color: #f5f7fa;
     color: black;
+    display: flex;
+    flex-direction: column;
 }
 
 .mainContainer {
     padding: 15px 25px;
+    flex: 1;
 }
 
 a {
@@ -56,6 +59,22 @@ a {
 
 .logoutLink:hover {
     color: #bbbfbc;
+}
+
+footer {
+    background-color: #032e09;
+    color: #bbbfbc;
+    padding: 24px 20px ;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
 }
 
 
