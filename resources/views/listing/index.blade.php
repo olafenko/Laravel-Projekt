@@ -4,8 +4,8 @@
 @section("content")
     <div class="listingsPage">
 
-        <form class="searchBar" method="get" action="">
-            <input type="text" name="searchFragment" placeholder="Wyszukaj po nazwie" value="">
+        <form class="searchBar" method="get" action="/listings">
+            <input type="text" name="searchFragment" placeholder="Wyszukaj po nazwie">
             <button type="submit">Szukaj</button>
         </form>
 
