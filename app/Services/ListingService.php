@@ -16,8 +16,24 @@ class ListingService
         $listingsQuery = Listing::where("is_active","=",true);
 
         $searchFragment = $request->input("searchFragment");
+        $categoryId = $request->input("category_id");
+        $priceSort = $request->input("priceSort");
+        $publishDate = $request->input("publishDate");
+
         if($searchFragment){
             $listingsQuery->where("title","ILIKE","%".$searchFragment."%");
+        }
+
+        if($categoryId){
+            $listingsQuery->where("category_id","=",$categoryId);
+        }
+
+        if($priceSort){
+            $listingsQuery->orderBy("price",$priceSort);
+        }
+
+        if($publishDate){
+            $listingsQuery->orderBy("created_at",$publishDate);
         }
 
         return $listingsQuery->get();

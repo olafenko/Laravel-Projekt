@@ -22,8 +22,9 @@ class ListingController extends Controller
     public function index(Request $request)
     {
         $models = $this->listingService->getAllListings($request);
+        $categories = $this->categoryService->getAllCategories();
 
-        return view("listing.index",["models" => $models,"listingsCount" => $models->count(),"page_title" => "Wszystkie ogłoszenia"]);
+        return view("listing.index",["models" => $models,"listingsCount" => $models->count(),"categories" =>$categories,"page_title" => "Wszystkie ogłoszenia"]);
     }
 
     public function listingDetails($id){

@@ -4,11 +4,41 @@
 @section("content")
     <div class="listingsPage">
 
-        <form class="searchBar" method="get" action="/listings">
-            <input type="text" name="searchFragment" placeholder="Wyszukaj po nazwie">
-            <button type="submit">Szukaj</button>
-        </form>
+        <form class="searchAndFilters" method="get" action="/listings">
+            <div class="searchBar">
+                <input type="text" name="searchFragment" placeholder="Wyszukaj po nazwie">
+                <button type="submit">Szukaj</button>
+            </div>
+            <div class="filtersRow">
+                <div class="filterSelect">
+                    <label>Kategoria: </label>
+                    <select name='category_id'>
+                        <option value="" selected>Wszystkie</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="filterSelect">
+                    <label>Cena: </label>
+                    <select name='priceSort'>
+                        <option value="" >Domyślnie</option>
+                        <option value="asc"> Od najniższej</option>
+                        <option value="desc">Od najwyższej</option>
+                    </select>
+                </div>
+                <div class="filterSelect">
+                    <label>Data dodania: </label>
+                    <select name='publishDate'>
+                        <option value="" >Domyślnie</option>
+                        <option value="desc"> Najnowsze</option>
+                        <option value="asc">Najstarsze</option>
+                    </select>
+                </div>
+            </div>
 
+
+        </form>
 
         <div class='resultsCount'>
             <h3>Znalezione ogłoszenia: {{$listingsCount}}</h3>
