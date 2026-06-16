@@ -35,12 +35,14 @@
                             @can("update",$model)
                                 <a class="editBtn" href='{{ url()->current() }}/edit/{{$model->id}}'>Edytuj</a>
                                 <form method='post' action='{{ url()->current() }}/delete/{{$model->id}}'>
+                                    @csrf
                                     <button type='submit' class="iconBtn delete">❌</button>
                                 </form>
                             @endcan
                             @can("add-as-favourite",$model)
-                                <form method='post' action=''>
-                                    <button type='submit' class="iconBtn fav">❤</button>
+                                <form method='post' action='favourites/toggle/{{$model->id}}'>
+                                    @csrf
+                                    <button type='submit' class="iconBtn {{auth()->user()->favourites->contains($model->id) ? 'inFavs' : 'fav'}}">❤</button>
                                 </form>
                             @endcan
                         @endauth
