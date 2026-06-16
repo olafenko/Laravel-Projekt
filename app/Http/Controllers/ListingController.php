@@ -12,10 +12,6 @@ class ListingController extends Controller
     private ListingService $listingService;
     private CategoryService $categoryService;
 
-    /**
-     * @param ListingService $listingService
-     * @param CategoryService $categoryService
-     */
     public function __construct(ListingService $listingService, CategoryService $categoryService)
     {
         $this->listingService = $listingService;

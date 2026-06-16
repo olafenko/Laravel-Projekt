@@ -1,17 +1,11 @@
 @extends("layout")
 
-
 @section("content")
+
     <div class="listingsPage">
 
-        <form class="searchBar" method="get" action="">
-            <input type="text" name="searchFragment" placeholder="Wyszukaj po nazwie" value="">
-            <button type="submit">Szukaj</button>
-        </form>
-
-
         <div class='resultsCount'>
-            <h3>Znalezione ogłoszenia: {{$listingsCount}}</h3>
+            <h3>Ulubione: {{$favCount ?? "Brak"}}</h3>
         </div>
 
         <div class="listingsCards">
@@ -30,17 +24,10 @@
                         <p class="metaData">Data dodania: {{$model->created_at}}</p>
                     </div>
                     <div class="listingCard-actions">
-                        <a class="detailsBtn" href='{{ url()->current() }}/{{$model->id}}'> Pokaż szczegóły</a>
+                        <a class="detailsBtn" href='/listings/{{$model->id}}'> Pokaż szczegóły</a>
                         @auth
-                            @can("update",$model)
-                                <a class="editBtn" href='{{ url()->current() }}/edit/{{$model->id}}'>Edytuj</a>
-                                <form method='post' action='{{ url()->current() }}/delete/{{$model->id}}'>
-                                    @csrf
-                                    <button type='submit' class="iconBtn delete">❌</button>
-                                </form>
-                            @endcan
                             @can("add-as-favourite",$model)
-                                <form method='post' action='{{ url()->current() }}/favourites/toggle/{{$model->id}}'>
+                                <form method='post' action='{{ url()->current() }}/toggle/{{$model->id}}'>
                                     @csrf
                                     <button type='submit' class="iconBtn {{auth()->user()->favourites->contains($model->id) ? 'inFavs' : 'fav'}}">❤</button>
                                 </form>

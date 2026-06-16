@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,21 @@ Route::post('/auth/register',[AuthController::class,"register"])->middleware("gu
 
 Route::get('/listings', [ListingController::class,"index"]);
 
+Route::get('/listings/create',[ListingController::class,"listingForm"])->middleware("auth");
+Route::post('/listings/create',[ListingController::class,"create"])->middleware("auth");
+
+Route::get('/listings/favourites',[FavouriteController::class,"index"])->middleware("auth");
+Route::post('/listings/favourites/toggle/{id}',[FavouriteController::class,"toggle"])->middleware("auth");
+
 Route::get('/listings/{id}', [ListingController::class,"listingDetails"]);
 
-Route::get('/listings/create',[ListingController::class,"listingForm"])->middleware("auth");
-Route::post('/listings/create',[ListingController::class,"create"])->middleware("auth");;
+Route::get('/listings/edit/{id}',[ListingController::class,"listingForm"])->middleware("auth");
+Route::post('/listings/edit/{id}',[ListingController::class,"edit"])->middleware("auth");
 
-Route::get('/listings/edit/{id}',[ListingController::class,"listingForm"])->middleware("auth");;
-Route::post('/listings/edit/{id}',[ListingController::class,"edit"])->middleware("auth");;
+Route::post('/listings/delete/{id}',[ListingController::class,"delete"])->middleware("auth");
 
-Route::post('/listings/delete/{id}',[ListingController::class,"delete"])->middleware("auth");;
+
+
+
 
 
