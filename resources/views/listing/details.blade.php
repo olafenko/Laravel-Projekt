@@ -10,7 +10,7 @@
 
                 <div class="detailsLeft">
                     <div class="detailsPhoto">
-                        <img src="{{$model->photo_url}}">
+                        <img src="{{$model->photo_url != null ? asset("storage/" . $model->photo_url) : asset("uploads/no-image.jpg")}}">
                     </div>
 
                     <div class="detailsInfo">

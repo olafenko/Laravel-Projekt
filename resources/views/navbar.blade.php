@@ -10,7 +10,7 @@
             <a href='/listings'>Wszystkie ogłoszenia</a>
             @auth()
                 <a href='/listings/create'>Dodaj ogłoszenie</a>
-                <a href='/listings/favourites/add'>Ulubione</a>
+                <a href='/listings/favourites'>Ulubione</a>
                 <a href='/messages'>Wiadomości</a>
                 <a href='/account'>Konto</a>
             <form method="post" action="/auth/logout" class="d-inline">

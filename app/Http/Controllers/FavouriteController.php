@@ -22,5 +22,10 @@ class FavouriteController extends Controller
         return back();
     }
 
+    public function index(){
+        $models = $this->favouriteService->getFavourites();
+        return view("favourite.index",["models" => $models,"favCount" => $models->count(),"page_title" => "Ulubione"]);
+    }
+
 
 }
