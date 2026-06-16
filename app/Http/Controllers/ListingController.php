@@ -19,9 +19,9 @@ class ListingController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $models = $this->listingService->getAllListings();
+        $models = $this->listingService->getAllListings($request);
 
         return view("listing.index",["models" => $models,"listingsCount" => $models->count(),"page_title" => "Wszystkie ogłoszenia"]);
     }

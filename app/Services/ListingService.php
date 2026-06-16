@@ -5,15 +5,22 @@ namespace App\Services;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ListingService
 {
 
-    public function getAllListings() : Collection{
-        return Listing::where("is_active","=",true)->get();
+    public function getAllListings(Request $request) : Collection{
+
+        $listingsQuery = Listing::where("is_active","=",true);
+
+        $searchFragment = $request->input("searchFragment");
+        if($searchFragment){
+            $listingsQuery->where("title","ILIKE","%".$searchFragment."%");
+        }
+
+        return $listingsQuery->get();
     }
 
     public function getListingById($id) {
