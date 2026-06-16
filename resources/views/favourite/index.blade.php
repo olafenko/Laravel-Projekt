@@ -21,7 +21,7 @@
                         <p>Lokalizacja: {{$model->location}}</p>
                         <p class="price">Cena: {{$model->price}} zł</p>
                         <p class="metaData">Dodano przez: {{$model->author->username}}</p>
-                        <p class="metaData">Data dodania: {{$model->created_at}}</p>
+                        <p class="metaData">Data dodania: {{$model->created_at->format("d.m.Y")}}</p>
                     </div>
                     <div class="listingCard-actions">
                         <a class="detailsBtn" href='/listings/{{$model->id}}'> Pokaż szczegóły</a>
