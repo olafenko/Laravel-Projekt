@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="detailsRight">
-                    <a class="authorLink" href="">Autor ogłoszenia: {{$model->author->username}}</a>
+                    <a class="authorLink" href="/user/profile/{{$model->author_id}}">Autor ogłoszenia: {{$model->author->username}}</a>
                     <div class="contactBox">
                         <h2>Kontakt </h2>
                         <p><strong>Email: {{$model->author->email}}</p>

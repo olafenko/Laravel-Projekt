@@ -12,7 +12,7 @@
                 <a href='/listings/create'>Dodaj ogłoszenie</a>
                 <a href='/listings/favourites'>Ulubione</a>
                 <a href='/messages'>Wiadomości</a>
-                <a href='/account'>Konto</a>
+                <a href='/user/profile/{{auth()->id()}}'>Konto</a>
             <form method="post" action="/auth/logout" class="d-inline">
                 @csrf
                 <button type="submit" class="logoutLink">Wyloguj</button>
