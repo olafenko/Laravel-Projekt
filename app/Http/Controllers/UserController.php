@@ -32,4 +32,16 @@ class UserController
         return redirect("/user/profile/" . $id);
     }
 
+    public function passwordChangeView($id){
+        $model = $this->userService->getUserById($id);
+        return view("user.passwordEdit",["model"=>$model,"page_title" => "Zmiana hasła"]);
+    }
+
+    public function passwordChange(Request $request, $id){
+        $this->userService->changePassword($request,$id);
+        return redirect("/user/profile/" . $id);
+    }
+
+
+
 }

@@ -5,7 +5,10 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
+
 
 class UserService
 {
@@ -38,6 +41,30 @@ class UserService
         }
 
         $model->update($credentials);
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+
+        $credentials = $request->validate([
+            "oldPassword" => ["required"],
+            "newPassword" => ["required","min:8","regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"],
+            "newPasswordRepeat" => ["required","same:newPassword"],
+        ]);
+
+        $model = User::findOrFail($id);
+
+        Gate::authorize('update',$model);
+
+        if(!Hash::check($request->input("oldPassword"),$model->password)){
+            throw ValidationException::withMessages([
+               "oldPassword" => "Stare hasło jest niepoprawne"
+            ]);
+        }
+
+        $model->update([
+            "password" => $request->input("newPassword")
+        ]);
     }
 
 
