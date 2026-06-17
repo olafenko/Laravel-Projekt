@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ListingController::class,"index"]);
@@ -15,6 +16,16 @@ Route::get('/auth/register',[AuthController::class,"registerView"])->middleware(
 Route::post('/auth/register',[AuthController::class,"register"])->middleware("guest");
 
 Route::get('/listings', [ListingController::class,"index"]);
+
+Route::get('/user/profile/{id}', [UserController::class,"profile"])->middleware("auth");
+
+Route::get('/user/profile/edit/{id}', [UserController::class,"editProfileView"])->middleware("auth");
+Route::post('/user/profile/edit/{id}', [UserController::class,"editProfile"])->middleware("auth");
+
+Route::get('/user/profile/password-change/{id}', [UserController::class,"passwordChangeView"])->middleware("auth");
+Route::post('/user/profile/password-change/{id}', [UserController::class,"passwordChange"])->middleware("auth");
+
+Route::post('/user/profile/deactivate/{id}', [UserController::class,"deactivateAccount"])->middleware("auth");
 
 Route::get('/listings/create',[ListingController::class,"listingForm"])->middleware("auth");
 Route::post('/listings/create',[ListingController::class,"create"])->middleware("auth");
