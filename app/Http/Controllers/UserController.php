@@ -42,6 +42,15 @@ class UserController
         return redirect("/user/profile/" . $id);
     }
 
+    public function deactivateAccount(Request $request,$id){
+        $this->userService->deactivate($id);
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect("/");
+    }
+
 
 
 }

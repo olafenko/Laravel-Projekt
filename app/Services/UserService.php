@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -65,6 +66,21 @@ class UserService
         $model->update([
             "password" => $request->input("newPassword")
         ]);
+    }
+
+    public function deactivate($id){
+
+        $model = User::findOrFail($id);
+
+        Gate::authorize("update",$model);
+
+        $model->is_active = false;
+        $model->listings()->update([
+           "is_active" => false
+        ]);
+        $model->save();
+
+        Auth::logout();
     }
 
 

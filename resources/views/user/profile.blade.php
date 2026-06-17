@@ -21,9 +21,9 @@
                     <a class="detailsBtn" href="/user/profile/edit/{{$model->id}}">Edytuj profil</a>
                     <a class="passwordBtn" href="/user/profile/password-change/{{$model->id}}">Zmień hasło</a>
 
-                    <form method="post" action="">
+                    <form method="post" action="/user/profile/deactivate/{{$model->id}}">
                         @csrf
-                        <button class="deleteBtn">Dezaktywuj konto ❌</button>
+                        <button class="deleteBtn">Dezaktywuj konto</button>
                     </form>
                 </div>
             @endcan
