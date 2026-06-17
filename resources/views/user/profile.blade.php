@@ -18,7 +18,7 @@
 
             @can("update",$model)
                 <div class="profileActions">
-                    <a class="detailsBtn" href="">Edytuj profil</a>
+                    <a class="detailsBtn" href="/user/profile/edit/{{$model->id}}">Edytuj profil</a>
                     <a class="passwordBtn" href="">Zmień hasło</a>
 
                     <form method="post" action="">

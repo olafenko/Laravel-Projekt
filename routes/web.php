@@ -19,6 +19,9 @@ Route::get('/listings', [ListingController::class,"index"]);
 
 Route::get('/user/profile/{id}', [UserController::class,"profile"])->middleware("auth");
 
+Route::get('/user/profile/edit/{id}', [UserController::class,"editProfileView"])->middleware("auth");
+Route::post('/user/profile/edit/{id}', [UserController::class,"editProfile"])->middleware("auth");
+
 Route::get('/listings/create',[ListingController::class,"listingForm"])->middleware("auth");
 Route::post('/listings/create',[ListingController::class,"create"])->middleware("auth");
 

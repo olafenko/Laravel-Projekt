@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\UserService;
+use Illuminate\Http\Request;
 
 class UserController
 {
@@ -18,6 +19,17 @@ class UserController
 
         $model = $this->userService->getUserById($id);
         return view("user.profile",["model"=>$model,"page_title" => "Profil użytkownika"]);
+    }
+
+    public function editProfileView($id){
+        $model = $this->userService->getUserById($id);
+        return view("user.profileEdit",["model"=>$model,"page_title" => "Edycja profilu"]);
+    }
+
+    public function editProfile(Request $request, $id){
+
+        $this->userService->edit($request,$id);
+        return redirect("/user/profile/" . $id);
     }
 
 }
