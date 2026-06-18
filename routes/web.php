@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,17 @@ Route::get('/listings/edit/{id}',[ListingController::class,"listingForm"])->midd
 Route::post('/listings/edit/{id}',[ListingController::class,"edit"])->middleware("auth");
 
 Route::post('/listings/delete/{id}',[ListingController::class,"delete"])->middleware("auth");
+
+Route::get('/messages/{id}',[MessageController::class,"index"])->middleware("auth");
+
+Route::get('/messages/details/{id}',[MessageController::class,"details"])->middleware("auth");
+
+Route::get('/messages/send/{id}',[MessageController::class,"sendFromView"])->middleware("auth");
+
+Route::post('/messages/send/{id}',[MessageController::class,"sendMessage"])->middleware("auth");
+
+Route::get('/messages/reply/{id}',[MessageController::class,"replyFormView"])->middleware("auth");
+Route::post('/messages/reply/{id}',[MessageController::class,"reply"])->middleware("auth");
 
 
 

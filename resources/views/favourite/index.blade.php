@@ -26,7 +26,7 @@
                     <div class="listingCard-actions">
                         <a class="detailsBtn" href='/listings/{{$model->id}}'> Pokaż szczegóły</a>
                         @auth
-                            @can("add-as-favourite",$model)
+                            @can("guest-actions",$model)
                                 <form method='post' action='{{ url()->current() }}/toggle/{{$model->id}}'>
                                     @csrf
                                     <button type='submit' class="iconBtn {{auth()->user()->favourites->contains($model->id) ? 'inFavs' : 'fav'}}">❤</button>

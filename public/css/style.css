@@ -816,15 +816,25 @@ footer p {
 
 .msgSender {
     font-size: 16px;
-    color: #555
+    color: #555;
+    margin: 0;
 }
 
 .msgDate {
-
-    font-size: 12px;
+    font-size: 14px;
     color: #888;
 }
 
+.senderLink {
+    transition: 0.2s ease;
+    text-decoration: none;
+    color: #444444;
+    font-size: 16px;
+}
+
+.senderLink:hover {
+    color: #2d652f;
+}
 
 /*----- STYLE DLA FORMULARZA WIADOMOŚCI -----*/
 

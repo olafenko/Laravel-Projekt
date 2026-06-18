@@ -11,7 +11,7 @@
             @auth()
                 <a href='/listings/create'>Dodaj ogłoszenie</a>
                 <a href='/listings/favourites'>Ulubione</a>
-                <a href='/messages'>Wiadomości</a>
+                <a href='/messages/{{auth()->id()}}'>Wiadomości</a>
                 <a href='/user/profile/{{auth()->id()}}'>Konto</a>
             <form method="post" action="/auth/logout" class="d-inline">
                 @csrf

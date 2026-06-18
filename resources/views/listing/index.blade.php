@@ -60,17 +60,17 @@
                         <p class="metaData">Data dodania: {{$model->created_at->format("d.m.Y")}}</p>
                     </div>
                     <div class="listingCard-actions">
-                        <a class="detailsBtn" href='{{ url()->current() }}/{{$model->id}}'> Pokaż szczegóły</a>
+                        <a class="detailsBtn" href='/listings/{{$model->id}}'> Pokaż szczegóły</a>
                         @auth
                             @can("update",$model)
-                                <a class="editBtn" href='{{ url()->current() }}/edit/{{$model->id}}'>Edytuj</a>
-                                <form method='post' action='{{ url()->current() }}/delete/{{$model->id}}'>
+                                <a class="editBtn" href='/listings/edit/{{$model->id}}'>Edytuj</a>
+                                <form method='post' action='/listings/delete/{{$model->id}}'>
                                     @csrf
                                     <button type='submit' class="iconBtn delete">❌</button>
                                 </form>
                             @endcan
-                            @can("add-as-favourite",$model)
-                                <form method='post' action='{{ url()->current() }}/favourites/toggle/{{$model->id}}'>
+                            @can("guest-actions",$model)
+                                <form method='post' action='/listings/favourites/toggle/{{$model->id}}'>
                                     @csrf
                                     <button type='submit' class="iconBtn {{auth()->user()->favourites->contains($model->id) ? 'inFavs' : 'fav'}}">❤</button>
                                 </form>
