@@ -19,9 +19,7 @@
             </div>
 
             <div class="msgActions">
-                <form method="post" action="">
-                    <button type="submit" class="msgBtn">Odpowiedz</button>
-                </form>
+                <a href="/messages/reply/{{$model->id}}" class="msgBtn">Odpowiedz</a>
                 <a class="cancelBtn" href="/messages/{{auth()->id()}}">Wróć</a>
             </div>
 
