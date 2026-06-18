@@ -69,4 +69,26 @@ class MessageService
         $model->save();
     }
 
+    public function reply(Request $request, $id)
+    {
+
+        $request->validate([
+            "message_content" => ["required","max:200"]
+        ]);
+
+        $message = $this->getMessageById($id);
+
+        $model = new Message();
+
+        Gate::authorize("reply",$message);
+
+        $model->sender_id = auth()->id();
+        $model->listing_id = $message->listing->id;
+        $model->receiver_id = $message->sender_id;
+        $model->message_content = $request->input("message_content");
+        $model->is_read = false;
+
+        $model->save();
+    }
+
 }

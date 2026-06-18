@@ -50,7 +50,7 @@ Route::get('/messages/send/{id}',[MessageController::class,"sendFromView"])->mid
 Route::post('/messages/send/{id}',[MessageController::class,"sendMessage"])->middleware("auth");
 
 Route::get('/messages/reply/{id}',[MessageController::class,"replyFormView"])->middleware("auth");
-Route::post('/messages/reply/{id}',[MessageController::class,"replyMessage"])->middleware("auth");
+Route::post('/messages/reply/{id}',[MessageController::class,"reply"])->middleware("auth");
 
 
 

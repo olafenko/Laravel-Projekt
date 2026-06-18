@@ -14,4 +14,9 @@ class MessagePolicy
         return $user->id === $message->receiver_id || $user->id === $message->sender_id ;
     }
 
+    public function reply(User $user, Message $message): bool
+    {
+        return $user->id !== $message->sender_id;
+    }
+
 }

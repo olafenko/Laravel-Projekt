@@ -48,6 +48,12 @@ class MessageController extends Controller
         return view("message.replyForm",["model" => $model,"page_title" => "Odpowiedz"]);
     }
 
+    public function reply(Request $request,$id){
+
+        $this->messageService->reply($request,$id);
+        return redirect('/');
+    }
+
 
 
 

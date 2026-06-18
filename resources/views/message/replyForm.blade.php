@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-            <form method="post" action="/messages/send/{{$model->listing->id}}">
+            <form method="post" action="/messages/reply/{{$model->id}}">
                 @csrf
                 <p><strong>Nowa wiadomość:</strong></p>
                 <textarea name="message_content" placeholder="Napisz wiadomość..." maxlength="200" required autofocus></textarea>

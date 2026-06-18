@@ -34,7 +34,9 @@
                         <p><strong>Email: {{$model->author->email}}</p>
                         <p><strong>Nr tel. {{$model->author->phone_number}}</p>
                     </div>
-                    <a class="msgBtn" href="/messages/send/{{$model->id}}">Napisz wiadomość</a>
+                    @can('guest-actions',$model)
+                        <a class="msgBtn" href="/messages/send/{{$model->id}}">Napisz wiadomość</a>
+                    @endcan
                 </div>
             </div>
 
