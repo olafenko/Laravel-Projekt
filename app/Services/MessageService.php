@@ -20,4 +20,18 @@ class MessageService
 
     }
 
+    public function getMessageDetails($id){
+
+        $model = Message::with('receiver','sender','listing')->findOrFail($id);
+
+        Gate::authorize("view",$model);
+
+        if(!$model->is_read && $model->receiver_id === auth()->id()){
+            $model->is_read = true;
+            $model->save();
+        }
+
+        return $model;
+    }
+
 }

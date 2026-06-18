@@ -42,6 +42,7 @@ Route::post('/listings/edit/{id}',[ListingController::class,"edit"])->middleware
 Route::post('/listings/delete/{id}',[ListingController::class,"delete"])->middleware("auth");
 
 Route::get('/messages/{id}',[MessageController::class,"index"])->middleware("auth");
+Route::get('/messages/details/{id}',[MessageController::class,"details"])->middleware("auth");
 
 
 

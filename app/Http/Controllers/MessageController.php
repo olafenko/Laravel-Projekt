@@ -20,4 +20,10 @@ class MessageController extends Controller
         $models = $this->messageService->getAllMessages($id);
         return view("message.index",["models"=>$models,"messageCount" => $models->count(),"page_title" => "Wszystkie wiadomości"]);
     }
+
+    public function details($id){
+
+        $model = $this->messageService->getMessageDetails($id);
+        return view("message.details",["model"=>$model,"page_title" => "Podgląd wiadomości"]);
+    }
 }
