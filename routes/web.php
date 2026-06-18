@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,10 @@ Route::get('/listings/edit/{id}',[ListingController::class,"listingForm"])->midd
 Route::post('/listings/edit/{id}',[ListingController::class,"edit"])->middleware("auth");
 
 Route::post('/listings/delete/{id}',[ListingController::class,"delete"])->middleware("auth");
+
+Route::get('/messages/{id}',[MessageController::class,"index"])->middleware("auth");
+
+
 
 
 

@@ -17,6 +17,8 @@ class AuthService
            "password" => "required"
         ]);
 
+        $credentials["is_active"] = true;
+
         return Auth::attempt($credentials);
 
     }
