@@ -19,6 +19,7 @@ class ListingService
         $categoryId = $request->input("category_id");
         $priceSort = $request->input("priceSort");
         $publishDate = $request->input("publishDate");
+        $city = $request->input("location");
 
         if($searchFragment){
             $listingsQuery->where("title","ILIKE","%".$searchFragment."%");
@@ -34,6 +35,10 @@ class ListingService
 
         if($publishDate){
             $listingsQuery->orderBy("created_at",$publishDate);
+        }
+
+        if($city){
+            $listingsQuery->where("location",$city);
         }
 
         return $listingsQuery->get();

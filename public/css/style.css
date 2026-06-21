@@ -717,6 +717,14 @@ footer p {
     background: #4d9850;
 }
 
+.searchBarCity input {
+    width: 200px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
 .filtersRow {
     display: flex;
     gap: 24px;
@@ -740,13 +748,23 @@ footer p {
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 14px;
-    min-width: 200px;
+    min-width: 160px;
     background-color: white;
     cursor: pointer;
 }
 
 .filterSelect select:focus {
     outline-color: #2d652f;
+}
+
+.filterSelect input {
+    padding: 10px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    min-width: 160px;
+    background-color: white;
+    cursor: pointer;
 }
 
 /*----- STYLE DLA WIADOMOSCI -----*/

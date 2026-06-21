@@ -35,7 +35,12 @@
 
                 <div class="formInput">
                     <label>Lokalizacja</label>
-                    <input type="text" name="location" value="{{old('location',$model->location ?? null)}}" required>
+                    <input type="text" name="location" list="cities" value="{{old("location",$model->location)}}" required>
+                    <datalist id="cities">
+                        @foreach($cities as $city)
+                            <option value="{{$city->name}}"></option>
+                        @endforeach
+                    </datalist>
                 </div>
 
                 <div class="formInput">
