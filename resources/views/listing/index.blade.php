@@ -35,6 +35,15 @@
                         <option value="asc">Najstarsze</option>
                     </select>
                 </div>
+                <div class="filterSelect">
+                    <label>Miejscowość:</label>
+                    <input type="text" name="location" list="cities">
+                    <datalist id="cities">
+                        @foreach($cities as $city)
+                            <option value="{{$city->name}}"></option>
+                        @endforeach
+                    </datalist>
+                </div>
             </div>
 
 

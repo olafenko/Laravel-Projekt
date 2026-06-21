@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CategoryService;
+use App\Services\CityService;
 use App\Services\ListingService;
 use Illuminate\Http\Request;
 
@@ -11,11 +12,13 @@ class ListingController extends Controller
 
     private ListingService $listingService;
     private CategoryService $categoryService;
+    private CityService $cityService;
 
-    public function __construct(ListingService $listingService, CategoryService $categoryService)
+    public function __construct(ListingService $listingService, CategoryService $categoryService, CityService $cityService)
     {
         $this->listingService = $listingService;
         $this->categoryService = $categoryService;
+        $this->cityService = $cityService;
     }
 
 
@@ -23,8 +26,9 @@ class ListingController extends Controller
     {
         $models = $this->listingService->getAllListings($request);
         $categories = $this->categoryService->getAllCategories();
+        $cities = $this->cityService->getAllCities();
 
-        return view("listing.index",["models" => $models,"listingsCount" => $models->count(),"categories" =>$categories,"page_title" => "Wszystkie ogłoszenia"]);
+        return view("listing.index",["models" => $models,"cities" => $cities,"listingsCount" => $models->count(),"categories" =>$categories,"page_title" => "Wszystkie ogłoszenia"]);
     }
 
     public function listingDetails($id){
@@ -35,8 +39,9 @@ class ListingController extends Controller
     public function listingForm(?int $id = null)
     {
         $categories = $this->categoryService->getAllCategories();
+        $cities = $this->cityService->getAllCities();
         $listing = $this->listingService->getListingById($id);
-        return view("listing.form",["categories" => $categories,"page_title" => $listing == null ? "Dodaj ogłoszenie" : "Edytuj ogłoszenie","model" => $listing]);
+        return view("listing.form",["categories" => $categories,"cities" => $cities,"page_title" => $listing == null ? "Dodaj ogłoszenie" : "Edytuj ogłoszenie","model" => $listing]);
     }
 
     public function create(Request $request)
