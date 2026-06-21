@@ -11,7 +11,7 @@ class ListingPolicy
 
     public function update(User $user, Listing $listing): bool
     {
-        return ($user->id === $listing->author_id) || $user->is_admin;
+        return ($user->id === $listing->author_id);
     }
 
     public function guestActions(User $user, Listing $listing): bool
